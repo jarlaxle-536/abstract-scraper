@@ -1,0 +1,27 @@
+<form method="GET" action="" id="searchform" method="get">
+    <input class="searchfield" id="searchbox" name="query" placeholder="Search..."/>
+
+    <select id="depth_selector" name="max_depth">
+      {% for i in '012'|make_list %}
+          <option value="{{ i }}">
+            {{ i }}
+          </option>
+      {% endfor %}
+    </select>
+</form>
+
+<h2>QUERY RESULTS</h2>
+
+{% for article in articles %}
+<h3>
+  {{ article.info }}
+</h3>
+<h4>
+  {{ article.info.authors }}
+</h4>
+<p>
+  {{ article.info.abstract }}
+<p>
+{% empty %}
+<p>No results</p>
+{% endfor %}
